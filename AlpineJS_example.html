@@ -1,0 +1,33 @@
+<!-- Created with suggestions from ChatGPT and AlpineJS Doc -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AlpineJS Click Example</title>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <style>
+        .numbers {
+            display: flex;
+            justify-content: space-around;
+        }
+        
+        .number {
+            cursor: pointer;
+        }
+
+        .active {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<div x-data="{ handleClick: (number) => { $data.activeNumber = number; alert('You clicked ' + number); }, activeNumber: null }" class="numbers">
+    <template x-for="i in 10" :key="i">
+        <span @click="handleClick(i)" class="number" :class="{ 'active': $data.activeNumber === i }" x-text="i"></span>
+    </template>
+</div>
+
+</body>
+</html>
